@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block main %}
+    {{ super() }}
+    <div class="page-header">
+      <div class="squares square1"></div>
+      <div class="squares square2"></div>
+      <div class="squares square3"></div>
+      <div class="squares square4"></div>
+      <div class="squares square5"></div>
+      <div class="squares square6"></div>
+      <div class="squares square7"></div>
+      <div class="container">
+        <div class="col-lg-5 col-md-8 mx-auto">
+          <div class="card card-login">
+            <form class="form" method="" action="">
+              <div class="card-header">
+                <img class="card-img" src="{{ url_for('static', filename='img/square-purple-1.png') }}" alt="Card image">
+                <h4 class="card-title text-center text-white pt-2">Login</h4>
+              </div>
+              <div class="card-body">
+                <div class="input-group input-lg">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="tim-icons icon-single-02"></i></span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="First Name...">
+                </div>
+                <div class="input-group input-lg">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="tim-icons icon-caps-small"></i></span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Last Name...">
+                </div>
+              </div>
+              <div class="card-footer text-center">
+                <a href="#pablo" class="btn btn-primary btn-round btn-lg btn-block">Get Started</a>
+              </div>
+              <div class="pull-left ml-3 mb-3">
+                <h6>
+                </h6>
+              </div>
+              <div class="pull-right mr-3 mb-3">
+                <h6>
+                  <a href="#pablo" class="link footer-link">Need Help?</a>
+                </h6>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
+{% block fscripts %}
+    {{ super() }}
+{% endblock %}
+{% block fapp_scripts %}
+    {{ super() }}
+{% endblock %}

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static', filename='img/apple-icon.png') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- Nucleo Icons -->
+    <link href="{{ url_for('static', filename='css/nucleo-icons.css') }}" rel="stylesheet" />
+    <!-- CSS Files -->
+    <link href="{{ url_for('static', filename='css/blk-design-system-pro.css') }}" rel="stylesheet" />
+    {% block head %}
+    {% endblock %}
+</head>
+
+<body class="index-page">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg  fixed-top navbar-transparent " color-on-scroll="300">
+        <div class="container">
+            <div class="navbar-translate">
+                <a class="navbar-brand" href="/">
+                    <span>•</span> System
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+                    aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-bar bar1"></span>
+                    <span class="navbar-toggler-bar bar2"></span>
+                    <span class="navbar-toggler-bar bar3"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navigation">
+                <div class="navbar-collapse-header">
+                    <div class="row">
+                        <div class="col-6 collapse-brand">
+                            <a>
+                                •
+                                <span> System </span>
+                            </a>
+                        </div>
+                        <div class="col-6 collapse-close text-right">
+                            <button type="button" class="navbar-toggler" data-toggle="collapse"
+                                data-target="#navigation" aria-controls="navigation-index" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <i class="tim-icons icon-simple-remove"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <ul class="navbar-nav ml-auto">
+                    <li class="dropdown nav-item">
+                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                            <i class="fa fa-cogs d-lg-none d-xl-none"></i> Getting started
+                        </a>
+                        <div class="dropdown-menu dropdown-with-icons">
+                            <a href="./index.html" class="dropdown-item">
+                                <i class="tim-icons icon-paper"></i> Components
+                            </a>
+                            <a href="./presentation.html" class="dropdown-item">
+                                <i class="tim-icons icon-bullet-list-67"></i>Presentation Page
+                            </a>
+                            <a href="https://demos.creative-tim.com/blk-design-system-pro/docs/1.0/getting-started/overview.html"
+                                class="dropdown-item">
+                                <i class="tim-icons icon-book-bookmark"></i>Documentation
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">
+                            <i class="tim-icons icon-paper" aria-hidden="true"></i>
+                            <p>Sections</p>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="./sections.html#headers">
+                                <i class="tim-icons icon-app"></i> Headers
+                            </a>
+                            <a class="dropdown-item" href="./sections.html#features">
+                                <i class="tim-icons icon-settings"></i> Features
+                            </a>
+                            <a class="dropdown-item" href="./sections.html#blogs">
+                                <i class="tim-icons icon-align-left-2"></i> Blogs
+                            </a>
+                            <a class="dropdown-item" href="./sections.html#teams">
+                                <i class="tim-icons icon-user-run"></i> Teams
+                            </a>
+                            <a class="dropdown-item" href="./sections.html#projects">
+                                <i class="tim-icons icon-paper"></i> Projects
+                            </a>
+                            <a class="dropdown-item" href="./sections.html#pricing">
+                                <i class="tim-icons icon-money-coins"></i> Pricing
+                            </a>
+                            <a class="dropdown-item" href="./sections.html#testimonials">
+                                <i class="tim-icons icon-chat-33"></i> Testimonials
+                            </a>
+                            <a class="dropdown-item" href="./sections.html#contactus">
+                                <i class="tim-icons icon-mobile"></i> Contact Us
+                            </a>
+                            <a class="dropdown-item" href="./sections.html#tables">
+                                <i class="tim-icons icon-chart-bar-32"></i> Tables
+                            </a>
+                            <a class="dropdown-item" href="./sections.html#accordion">
+                                <i class="tim-icons icon-paper"></i> Accordion
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">
+                            <i class="tim-icons icon-book-bookmark" aria-hidden="true"></i>
+                            <p>Examples</p>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="./examples/about-us.html">
+                                <i class="tim-icons icon-bulb-63"></i> About-us
+                            </a>
+                            <a class="dropdown-item" href="./examples/blog-post.html">
+                                <i class="tim-icons icon-align-center"></i> Blog Post
+                            </a>
+                            <a class="dropdown-item" href="./examples/blog-posts.html">
+                                <i class="tim-icons icon-chart-bar-32"></i> Blog Posts
+                            </a>
+                            <a class="dropdown-item" href="./examples/contact-us.html">
+                                <i class="tim-icons icon-square-pin"></i> Contact Us
+                            </a>
+                            <a class="dropdown-item" href="./examples/landing-page.html">
+                                <i class="tim-icons icon-paper"></i> Landing Page
+                            </a>
+                            <a class="dropdown-item" href="./examples/pricing.html">
+                                <i class="tim-icons icon-coins"></i> Pricing
+                            </a>
+                            <a class="dropdown-item" href="./examples/ecommerce.html">
+                                <i class="tim-icons icon-basket-simple"></i> Ecommerce Page
+                            </a>
+                            <a class="dropdown-item" href="./examples/product-page.html">
+                                <i class="tim-icons icon-bag-16"></i> Product Page
+                            </a>
+                            <a class="dropdown-item" href="./examples/profile-page.html">
+                                <i class="tim-icons icon-lock-circle"></i> Profile Page
+                            </a>
+                            <a class="dropdown-item" href="./examples/error.html">
+                                <i class="tim-icons icon-button-power"></i> 404 Error Page
+                            </a>
+                            <a class="dropdown-item" href="./examples/500-error.html">
+                                <i class="tim-icons icon-alert-circle-exc"></i> 500 Error Page
+                            </a>
+                            <a href="#" class="dropdown-item dropdown-toggle" id="navbarDropdown2"
+                                data-toggle="dropdown">
+                                <i class="tim-icons icon-book-bookmark" aria-hidden="true"></i> App Pages
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                                <a class="dropdown-item" href="./examples/account-settings.html">
+                                    <i class="tim-icons icon-lock-circle"></i> Account Settings
+                                </a>
+                                <a class="dropdown-item" href="./examples/login-page.html">
+                                    <i class="tim-icons icon-tablet-2"></i> Login Page
+                                </a>
+                                <a class="dropdown-item" href="./examples/register-page.html">
+                                    <i class="tim-icons icon-laptop"></i> Register Page
+                                </a>
+                                <a class="dropdown-item" href="./examples/reset-page.html">
+                                    <i class="tim-icons icon-molecule-40"></i> Reset Page
+                                </a>
+                                <a class="dropdown-item" href="./examples/invoice-page.html">
+                                    <i class="tim-icons icon-notes"></i> Invoice Page
+                                </a>
+                                <a class="dropdown-item" href="./examples/checkout-page.html">
+                                    <i class="tim-icons icon-basket-simple"></i> Checkout Page
+                                </a>
+                                <a class="dropdown-item" href="./examples/chat-page.html">
+                                    <i class="tim-icons icon-email-85"></i> Chat Page
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-sm btn-default"
+                            href="/login">
+                            <p>Login</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="wrapper">
+        {% block main %}
+        {% endblock %}
+    </div>
+    <!--   Core JS Files   -->
+    <script src="{{ url_for('static', filename='js/core/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='js/core/popper.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='js/core/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/plugins/bootstrap-switch.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/plugins/nouislider.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='js/plugins/slick.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='js/plugins/anime.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='js/plugins/chartjs.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/plugins/moment.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/plugins/bootstrap-tagsinput.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/plugins/bootstrap-selectpicker.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='js/plugins/bootstrap-datetimepicker.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='js/plugins/jasny-bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/blk-design-system-pro.min.js') }}" type="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+            blackKit.initDatePicker();
+            blackKit.initSliders();
+        });
+
+        function scrollToDownload() {
+
+            if ($('.section-download').length != 0) {
+                $("html, body").animate({
+                    scrollTop: $('.section-download').offset().top
+                }, 1000);
+            }
+        }
+    </script>
+    <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+    {% block fscripts %}
+    {% endblock %}
+    {% block fapp_scripts %}
+    {% endblock %}
+</body>
+
+</html>
