@@ -22,29 +22,35 @@
                 <h4 class="card-title text-center text-white pt-2">Login</h4>
               </div>
               <div class="card-body">
+                {% if need_admin == false %}
                 <div class="input-group input-lg">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="tim-icons icon-single-02"></i></span>
                   </div>
-                  <input type="text" class="form-control" placeholder="First Name...">
+                  <input id="username" type="text" class="form-control" placeholder="Nombre de Usuari">
                 </div>
                 <div class="input-group input-lg">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="tim-icons icon-caps-small"></i></span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Last Name...">
+                  <input id="password" type="password" class="form-control" placeholder="Contraseña">
                 </div>
+                {% endif %}
               </div>
               <div class="card-footer text-center">
-                <a href="#pablo" class="btn btn-primary btn-round btn-lg btn-block">Get Started</a>
+                {% if need_admin == true %}
+                <a href="javascript:;" onclick="LogIn.create_admin()" class="btn btn-primary btn-round btn-lg btn-block">Registrar Admin</a>
+                {% else %}
+                <a href="javascript:;" onclick="LogIn.login()" class="btn btn-primary btn-round btn-lg btn-block disabled btn-login">Inciar Sesion</a>
+                {% endif %}
               </div>
               <div class="pull-left ml-3 mb-3">
                 <h6>
                 </h6>
               </div>
-              <div class="pull-right mr-3 mb-3">
+              <div class="pull-right mr-3 mb-3 d-none">
                 <h6>
-                  <a href="#pablo" class="link footer-link">Need Help?</a>
+                  <a href="javascript:;" class="link footer-link">¿Necesita Ayuada?</a>
                 </h6>
               </div>
             </form>
@@ -55,6 +61,7 @@
 {% endblock %}
 {% block fscripts %}
     {{ super() }}
+    <script src="{{url_for('static', filename="js/login.js")}}"></script>
 {% endblock %}
 {% block fapp_scripts %}
     {{ super() }}
