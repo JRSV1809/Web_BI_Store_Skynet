@@ -1,4 +1,6 @@
 class Config:
-    SECRET_KEY = 'mysecretkey'
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///mydatabase.db'
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    DB_HOST= "host"
+    DB_PORT=2259
+    DB_USERNAME="user"
+    DB_PASSWORD="pass"
+    DB_SCHEMA="schema_db"
