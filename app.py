@@ -51,3 +51,8 @@ def login():
         if data['option'] == 'log_in':
             return Auth(app,bcrypt).login(data['username'], data['password'])
         return True
+    
+@app.route('/logout')
+def logout():
+    Auth(app, bcrypt).logout()
+    return redirect(url_for('login'))

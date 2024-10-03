@@ -88,3 +88,7 @@ class Auth:
 
         db = MySQL()
         cursor = db.connection.cursor()
+
+    def logout(self):
+        session.clear()
+        return True
