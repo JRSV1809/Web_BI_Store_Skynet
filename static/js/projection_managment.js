@@ -8,6 +8,7 @@
             let table = new DataTable('#table_projections');
         },
         getModalProjection: function() {
+            $(".uploadFileProjection-title").text('Creacion de Proyeccion')
             $("#uploadFileProjection-body").empty()
             let payload = {
                 'option': 'get_url_upload_file'
@@ -128,7 +129,7 @@
                             }
                           });
 
-                        $('#name_projection').unbind().on('keydown keyup change', function () {
+                        $('#name_projection, #days_to_project').unbind().on('keydown keyup change', function () {
                             let name_projection = $('#name_projection').val()
                                 let date_from = $('#date_from').val()
                                 let date_to = $('#date_to').val()
@@ -188,6 +189,79 @@
                     console.log(e);
                 });
             });
+        },
+        getModalProjectionCopy: function(file_name){
+            $("#uploadFileProjection-body").empty()
+            $(".uploadFileProjection-title").text('Copiar Proyeccion')
+
+            $("#uploadFileProjection-body").append(`
+                <input type="text" value="${file_name}" class="form-control text-black d-none" id="filename">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input type="text" placeholder="Nombre" class="form-control text-black" id="name_projection">
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label>Fecha Desde (Muestra):</label>
+                            <input type="text" class="form-control datepicker text-black" id="date_from">
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label>Fecha Hasta (Muestra):</label>
+                            <input type="text" class="form-control datepicker text-black" id="date_to">
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label>Dias A Proyectar:</label>
+                            <input type="number" placeholder="30" class="form-control text-black" id="days_to_project">
+                        </div>
+                    </div>
+                </div>
+            `)
+
+            $('#date_from').datetimepicker({
+                format: 'YYYY/MM/DD',
+                icons: {
+                  date: "tim-icons icon-calendar-60",
+                  up: "fa fa-chevron-up",
+                  down: "fa fa-chevron-down",
+                  previous: 'tim-icons icon-minimal-left',
+                  next: 'tim-icons icon-minimal-right',
+                  today: 'fa fa-screenshot',
+                  clear: 'fa fa-trash',
+                  close: 'fa fa-remove'
+                }
+              });
+              $('#date_to').datetimepicker({
+                format: 'YYYY/MM/DD',
+                icons: {
+                  date: "tim-icons icon-calendar-60",
+                  up: "fa fa-chevron-up",
+                  down: "fa fa-chevron-down",
+                  previous: 'tim-icons icon-minimal-left',
+                  next: 'tim-icons icon-minimal-right',
+                  today: 'fa fa-screenshot',
+                  clear: 'fa fa-trash',
+                  close: 'fa fa-remove'
+                }
+              });
+
+              $('#name_projection, #days_to_project').unbind().on('keydown keyup change', function () {
+                let name_projection = $('#name_projection').val()
+                let date_from = $('#date_from').val()
+                let date_to = $('#date_to').val()
+                let days_to_project = $('#days_to_project').val()
+                if (name_projection.length > 0 && date_from.length > 0 && date_to.length > 0 && days_to_project.length > 0) {
+                    $('.btn-upload-projection').removeClass('disabled')
+                } else {
+                    $('.btn-upload-projection').addClass('disabled')
+                }
+            })
         }
     }
     

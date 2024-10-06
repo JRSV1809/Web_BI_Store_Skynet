@@ -118,3 +118,10 @@ def projections_managment():
         
         if data['option'] == 'save_projection':
             return projection_create.save(session.get('user_id'), data['name'], data['file'], data['date_from'], data['date_to'], data['days_to_project'])
+        
+@app.route('/app/projection/<id>')
+def projection_managment(id):
+    
+    if request.method == 'GET':
+        #Search by projectio, review if dont deploy, if not deploy map the csv file on db field, if is deploy display a GUI with charts and table of information
+        return render_template('projection.html')

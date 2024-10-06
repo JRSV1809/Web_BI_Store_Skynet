@@ -46,7 +46,7 @@ class Projection:
         db = MySQL()
         cursor = db.connection.cursor()
         try:
-            projection_list = cursor.execute("SElECT tjp.id, tjp.created_at , tjp.name, tju.name as 'user_name', DATE_FORMAT(tjp.date_from,'%Y-%m-%d') as 'date_from' , DATE_FORMAT(tjp.date_to,'%Y-%m-%d') as 'date_to' , tjp.days_to_project  FROM orbiskpicom.tmp_jr_proyection tjp INNER JOIN orbiskpicom.tmp_jr_user tju ON tjp.created_by = tju.id")
+            projection_list = cursor.execute("SElECT tjp.id, tjp.created_at , tjp.name, tju.name as 'user_name', DATE_FORMAT(tjp.date_from,'%Y-%m-%d') as 'date_from' , DATE_FORMAT(tjp.date_to,'%Y-%m-%d') as 'date_to' , tjp.days_to_project, tjp.file FROM orbiskpicom.tmp_jr_proyection tjp INNER JOIN orbiskpicom.tmp_jr_user tju ON tjp.created_by = tju.id")
             projection_list = list(cursor.fetchall())
             response["data"] = projection_list
         except Exception as e:
