@@ -4,6 +4,8 @@ from flask_mysqldb import MySQL
 from config import Config
 from controller.auth import Auth
 from controller.user import User
+from controller.projection import Projection
+import boto3
 
 app = Flask(__name__)
 
@@ -16,6 +18,11 @@ app.config["MYSQL_USER"] = Config.DB_USERNAME
 app.config["MYSQL_PASSWORD"] = Config.DB_PASSWORD
 app.config["MYSQL_DB"] = Config.DB_SCHEMA
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+
+app.config['session_boto'] = boto3.Session(
+    aws_access_key_id = Config.AWS_ACCESS_KEY_ID,
+    aws_secret_access_key = Config.AWS_SECRET_ACCESS_KEY
+)
 
 #init Bcrypt
 bcrypt = Bcrypt(app)
@@ -58,10 +65,21 @@ def logout():
     Auth(app, bcrypt).logout()
     return redirect(url_for('login'))
 
-@app.route('/app/dashboard')
+@app.route('/app/dashboard',methods=['GET', 'POST'])
 def dashboard():
-    data_welcome = Auth(app, bcrypt).welcome(session.get('user_id'))
-    return render_template('dashboard.html', welcome = data_welcome)
+    if request.method == 'GET':
+        data_welcome = Auth(app, bcrypt).welcome(session.get('user_id'))
+        return render_template('dashboard.html', welcome = data_welcome)
+    
+    if request.method == 'POST':
+        data = request.get_json()
+        projection_create = Projection(app, bcrypt)
+
+        if data['option'] == 'get_url_upload_file':
+            return projection_create.get_url_projection_file()
+        
+        if data['option'] == 'save_projection':
+            return projection_create.save(session.get('user_id'), data['name'], data['file'])
 
 @app.route('/app/user-managment',methods=['GET', 'POST'])
 def user_managment():
