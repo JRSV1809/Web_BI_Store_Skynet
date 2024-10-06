@@ -1,11 +1,11 @@
 /*
  * Project: System Temp
- * Description : JS to managment of Dashboard Page
+ * Description : JS to managment of User Managment View
  */
 (function($){
-    var Dashboard = {
+    var ProjectionManagment = {
         init: function(){
-            
+            let table = new DataTable('#table_projections');
         },
         getModalProjection: function() {
             $("#uploadFileProjection-body").empty()
@@ -192,8 +192,8 @@
     }
     
     $(document).ready(function(){
-        Dashboard.init();
+        ProjectionManagment.init();
     })
     
-    window.Dashboard = Dashboard;
+    window.ProjectionManagment = ProjectionManagment;
 })(jQuery)

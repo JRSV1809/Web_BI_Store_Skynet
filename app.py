@@ -79,7 +79,7 @@ def dashboard():
             return projection_create.get_url_projection_file()
         
         if data['option'] == 'save_projection':
-            return projection_create.save(session.get('user_id'), data['name'], data['file'])
+            return projection_create.save(session.get('user_id'), data['name'], data['file'], data['date_from'], data['date_to'], data['days_to_project'])
 
 @app.route('/app/user-managment',methods=['GET', 'POST'])
 def user_managment():
@@ -99,3 +99,22 @@ def user_managment():
         
         if data['option'] == 'reset_password':
             return user_managment_controller.update_password(data['id'], data['password'])
+        
+@app.route('/app/projections',methods=['GET', 'POST'])
+def projections_managment():
+    projection_controller = Projection(app,bcrypt)
+
+    if request.method == 'GET':
+        data_projection = projection_controller.get_projections()
+        print(data_projection)
+        return render_template('projection_managment.html', data_projection = data_projection['data'])
+    
+    if request.method == 'POST':
+        data = request.get_json()
+        projection_create = Projection(app, bcrypt)
+
+        if data['option'] == 'get_url_upload_file':
+            return projection_create.get_url_projection_file()
+        
+        if data['option'] == 'save_projection':
+            return projection_create.save(session.get('user_id'), data['name'], data['file'], data['date_from'], data['date_to'], data['days_to_project'])

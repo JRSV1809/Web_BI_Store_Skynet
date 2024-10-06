@@ -46,7 +46,7 @@ class Projection:
         db = MySQL()
         cursor = db.connection.cursor()
         try:
-            projection_list = cursor.execute("SElECT tjp.id, tjp.created_at , tjp.name, tju.name as 'user_name' FROM orbiskpicom.tmp_jr_proyection tjp INNER JOIN orbiskpicom.tmp_jr_user tju ON tjp.created_by = tju.id ")
+            projection_list = cursor.execute("SElECT tjp.id, tjp.created_at , tjp.name, tju.name as 'user_name', DATE_FORMAT(tjp.date_from,'%Y-%m-%d') as 'date_from' , DATE_FORMAT(tjp.date_to,'%Y-%m-%d') as 'date_to' , tjp.days_to_project  FROM orbiskpicom.tmp_jr_proyection tjp INNER JOIN orbiskpicom.tmp_jr_user tju ON tjp.created_by = tju.id")
             projection_list = list(cursor.fetchall())
             response["data"] = projection_list
         except Exception as e:
@@ -56,7 +56,7 @@ class Projection:
 
         return response
     
-    def save(self, user_id, name, file):
+    def save(self, user_id, name, file, date_from, date_to, days):
         response = {
             "error_fg": False,
             "error_msg": "",
@@ -69,7 +69,7 @@ class Projection:
 
             created_at = datetime.now().date().strftime("%Y-%m-%d")
 
-            cursor.execute("INSERT INTO orbiskpicom.tmp_jr_proyection (created_by, created_at, name, file) VALUES (%s, %s, %s, %s)", (user_id, created_at, name, file))
+            cursor.execute("INSERT INTO orbiskpicom.tmp_jr_proyection (created_by, created_at, name, file, date_from, date_to, days_to_project) VALUES (%s, %s, %s, %s, %s, %s, %s)", (user_id, created_at, name, file, date_from, date_to, days))
         except Exception as e:
             response['error_fg'] = True
             response['error_msg'] = str(e)
