@@ -59,6 +59,11 @@
                 <ul class="navbar-nav ml-auto">
                     {% if session.get('user_id') %}
                     <li class="dropdown nav-item">
+                        <a href="/app/user-managment" class="nav-link" >
+                            <i class="fa fa-user"></i> Usuarios
+                        </a>
+                    </li>
+                    <li class="dropdown nav-item">
                         <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                             <i class="fa fa-cogs d-lg-none d-xl-none"></i> Getting started
                         </a>

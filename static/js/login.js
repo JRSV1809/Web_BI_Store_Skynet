@@ -9,7 +9,6 @@
         },
         viewFieldsEmpty: function(){
             $('#username, #password').unbind().on('keydown keyup change', function () {
-                console.log('typing...')
                 let username = $('#username').val()
                 let password = $('#password').val()
                 if (username.length > 0 && password.length > 0) {

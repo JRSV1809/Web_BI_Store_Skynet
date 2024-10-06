@@ -27366,3 +27366,7 @@ select.selectpicker {
     margin-top: -330px;
   }
 }
+
+.text-black{
+  color: #000 !important;
+}

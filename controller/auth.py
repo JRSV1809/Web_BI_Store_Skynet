@@ -72,14 +72,17 @@ class Auth:
                 response["data"] = {'redirect_url':'/app/dashboard'}
             else:
                 response["error_fg"] = True
-                response["error_msg"] = "Unable to login with those credentials, please check your email/username or password and try again."
+                response["error_msg"] = "No se puede iniciar sesión con esas credenciales, por favor compruebe su correo electrónico/nombre de usuario o contraseña e inténtelo de nuevo"
         else:   
             response["error_fg"] = True
-            response["error_msg"] = "Unable to login with those credentials, please check your email/username or password and try again."
+            response["error_msg"] = "No se puede iniciar sesión con esas credenciales, por favor compruebe su correo electrónico/nombre de usuario o contraseña e inténtelo de nuevo"
         return response
+    
+    def logout(self):
+        session.clear()
+        return True
 
-    def creat_new_user(self, is_first, username, email, pasword, name, user_id_created):
-
+    def welcome(self, user_id):
         response = {
             "error_fg": False,
             "error_msg": "",
@@ -88,7 +91,9 @@ class Auth:
 
         db = MySQL()
         cursor = db.connection.cursor()
+        cursor.execute("SELECT name FROM tmp_jr_user WHERE id=%s", (user_id,))
+        user = cursor.fetchone()
 
-    def logout(self):
-        session.clear()
-        return True
+        response['data'] = user
+
+        return response

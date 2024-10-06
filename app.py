@@ -3,6 +3,7 @@ from flask_bcrypt import Bcrypt
 from flask_mysqldb import MySQL
 from config import Config
 from controller.auth import Auth
+from controller.user import User
 
 app = Flask(__name__)
 
@@ -56,3 +57,27 @@ def login():
 def logout():
     Auth(app, bcrypt).logout()
     return redirect(url_for('login'))
+
+@app.route('/app/dashboard')
+def dashboard():
+    data_welcome = Auth(app, bcrypt).welcome(session.get('user_id'))
+    return render_template('dashboard.html', welcome = data_welcome)
+
+@app.route('/app/user-managment',methods=['GET', 'POST'])
+def user_managment():
+    user_managment_controller = User(app, bcrypt)
+    if request.method == 'GET':
+        data_info = user_managment_controller.get_users()
+        return render_template('user-managment.html', data_users = data_info['data'])
+    
+    if request.method == 'POST':
+        data = request.get_json()
+
+        if data['option'] == 'save_user':
+            return user_managment_controller.create(session.get('user_id'), data['username'], data['email'], data['password'], data['name'] )
+        
+        if data['option'] == 'delete_user':
+            return user_managment_controller.delete(data['id'])
+        
+        if data['option'] == 'reset_password':
+            return user_managment_controller.update_password(data['id'], data['password'])
